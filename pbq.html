@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PBQ Lab | Network+ Study Hub</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .pbq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .pbq-card {
+      padding: 24px;
+      border-radius: 24px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(15,23,42,.95),
+          rgba(2,8,23,.92)
+        );
+
+      border: 1px solid rgba(255,255,255,.08);
+
+      transition: .25s ease;
+    }
+
+    .pbq-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .pbq-card h2 {
+      margin-top: 0;
+      color: var(--cyan);
+    }
+
+    .difficulty {
+      display: inline-block;
+
+      margin-bottom: 14px;
+
+      padding: 6px 12px;
+
+      border-radius: 999px;
+
+      background: rgba(255,255,255,.06);
+
+      color: var(--muted);
+
+      font-size: .82rem;
+
+      font-weight: 800;
+    }
+
+    .scenario-box {
+      margin-top: 18px;
+
+      padding: 18px;
+
+      border-radius: 18px;
+
+      background: rgba(255,255,255,.05);
+
+      border-left: 5px solid var(--orange);
+    }
+
+    .answer-btn {
+      margin-top: 18px;
+
+      padding: 12px 16px;
+
+      border: none;
+
+      border-radius: 14px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(59,130,246,.34),
+          rgba(168,85,247,.34)
+        );
+
+      color: white;
+
+      font-weight: 900;
+
+      cursor: pointer;
+    }
+
+    .hidden-answer {
+      display: none;
+
+      margin-top: 18px;
+
+      padding-top: 18px;
+
+      border-top: 1px solid rgba(255,255,255,.08);
+
+      color: #dbeafe;
+
+      line-height: 1.6;
+    }
+
+    .hidden-answer.show {
+      display: block;
+    }
+
+    .steps {
+      margin-top: 14px;
+      padding-left: 18px;
+      line-height: 1.8;
+    }
+
+    .terminal {
+      margin-top: 14px;
+
+      padding: 14px;
+
+      border-radius: 14px;
+
+      background: #020617;
+
+      font-family: monospace;
+
+      overflow-x: auto;
+    }
+
+    .terminal code {
+      color: #86efac;
+    }
+
+    @media (max-width: 900px) {
+      .pbq-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="shell">
+
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo">🧠</div>
+
+        <div>
+          <h2>
+            <span class="gradient-text">NET+</span>
+          </h2>
+
+          <span>N10-009</span>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="ports.html">Ports</a>
+        <a href="subnetting.html">Subnetting</a>
+        <a href="flashcards.html">Flashcards</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="acronyms.html">Acronyms</a>
+        <a href="commands.html">Commands</a>
+        <a href="osi.html">OSI Model</a>
+        <a href="pbq.html" class="active">PBQ Lab</a>
+      </nav>
+
+      <div class="side-note">
+        <strong>PBQ Rule</strong>
+        <span>Start simple. Eliminate obvious wrong answers first.</span>
+      </div>
+    </aside>
+
+    <main id="main">
+
+      <section class="hero-card">
+        <p class="eyebrow">PBQ Lab</p>
+
+        <h1>Practice how CompTIA actually asks questions.</h1>
+
+        <p class="subtitle">
+          Performance-based questions test whether you can troubleshoot and apply concepts under pressure — not just memorize definitions.
+        </p>
+      </section>
+
+      <section class="panel">
+
+        <p class="section-tag">PBQ Practice Scenarios</p>
+
+        <div class="pbq-grid">
+
+          <!-- PBQ 1 -->
+
+          <article class="pbq-card">
+
+            <span class="difficulty">Beginner</span>
+
+            <h2>No Internet Access</h2>
+
+            <p>
+              A user cannot access the internet.
+              They can connect to Wi-Fi,
+              but websites do not load.
+            </p>
+
+            <div class="scenario-box">
+              What should you check first?
+            </div>
+
+            <button class="answer-btn"
+              onclick="toggleAnswer('pbq1')">
+              Reveal Answer
+            </button>
+
+            <div class="hidden-answer" id="pbq1">
+
+              <strong>Start simple:</strong>
+
+              <ol class="steps">
+                <li>Check IP address</li>
+                <li>Check default gateway</li>
+                <li>Check DNS server</li>
+                <li>Ping gateway</li>
+                <li>Ping 8.8.8.8</li>
+                <li>Test DNS with nslookup</li>
+              </ol>
+
+              <div class="terminal">
+                <code>
+ipconfig /all<br>
+ping 8.8.8.8<br>
+nslookup google.com
+                </code>
+              </div>
+
+            </div>
+          </article>
+
+          <!-- PBQ 2 -->
+
+          <article class="pbq-card">
+
+            <span class="difficulty">Beginner</span>
+
+            <h2>APIPA Address</h2>
+
+            <p>
+              A workstation received
+              169.254.44.10
+            </p>
+
+            <div class="scenario-box">
+              What most likely failed?
+            </div>
+
+            <button class="answer-btn"
+              onclick="toggleAnswer('pbq2')">
+              Reveal Answer
+            </button>
+
+            <div class="hidden-answer" id="pbq2">
+
+              <strong>DHCP failed.</strong>
+
+              <p>
+                The computer gave itself an APIPA address because it could not reach the DHCP server.
+              </p>
+
+              <ol class="steps">
+                <li>Check DHCP server</li>
+                <li>Check switch/VLAN</li>
+                <li>Check cable or Wi-Fi</li>
+                <li>Run ipconfig /renew</li>
+              </ol>
+
+            </div>
+          </article>
+
+          <!-- PBQ 3 -->
+
+          <article class="pbq-card">
+
+            <span class="difficulty">Intermediate</span>
+
+            <h2>Switch Loop</h2>
+
+            <p>
+              Users report extremely slow network speeds after a second switch was connected.
+            </p>
+
+            <div class="scenario-box">
+              What protocol likely helps prevent this issue?
+            </div>
+
+            <button class="answer-btn"
+              onclick="toggleAnswer('pbq3')">
+              Reveal Answer
+            </button>
+
+            <div class="hidden-answer" id="pbq3">
+
+              <strong>STP (Spanning Tree Protocol)</strong>
+
+              <p>
+                STP prevents Layer 2 loops by blocking redundant switch paths.
+              </p>
+
+              <ol class="steps">
+                <li>Check STP status</li>
+                <li>Look for redundant paths</li>
+                <li>Check BPDU Guard</li>
+                <li>Verify switch topology</li>
+              </ol>
+
+            </div>
+          </article>
+
+          <!-- PBQ 4 -->
+
+          <article class="pbq-card">
+
+            <span class="difficulty">Intermediate</span>
+
+            <h2>Subnetting PBQ</h2>
+
+            <p>
+              You need at least 30 usable hosts.
+            </p>
+
+            <div class="scenario-box">
+              Which subnet should you use?
+            </div>
+
+            <button class="answer-btn"
+              onclick="toggleAnswer('pbq4')">
+              Reveal Answer
+            </button>
+
+            <div class="hidden-answer" id="pbq4">
+
+              <strong>/27</strong>
+
+              <p>
+                /27 gives:
+              </p>
+
+              <ul class="steps">
+                <li>32 total addresses</li>
+                <li>30 usable hosts</li>
+              </ul>
+
+              <p>
+                Remember:
+                128 → 64 → 32 → 16 → 8 → 4
+              </p>
+
+            </div>
+          </article>
+
+          <!-- PBQ 5 -->
+
+          <article class="pbq-card">
+
+            <span class="difficulty">Intermediate</span>
+
+            <h2>DNS Failure</h2>
+
+            <p>
+              Users can ping IP addresses,
+              but cannot open websites using names.
+            </p>
+
+            <div class="scenario-box">
+              What service is most likely failing?
+            </div>
+
+            <button class="answer-btn"
+              onclick="toggleAnswer('pbq5')">
+              Reveal Answer
+            </button>
+
+            <div class="hidden-answer" id="pbq5">
+
+              <strong>DNS</strong>
+
+              <p>
+                If IP connectivity works but names fail,
+                DNS is usually the problem.
+              </p>
+
+              <div class="terminal">
+                <code>
+nslookup google.com
+                </code>
+              </div>
+
+            </div>
+          </article>
+
+          <!-- PBQ 6 -->
+
+          <article class="pbq-card">
+
+            <span class="difficulty">Intermediate</span>
+
+            <h2>Remote Access</h2>
+
+            <p>
+              A technician needs secure remote CLI access to a Linux server.
+            </p>
+
+            <div class="scenario-box">
+              Which protocol and port should be used?
+            </div>
+
+            <button class="answer-btn"
+              onclick="toggleAnswer('pbq6')">
+              Reveal Answer
+            </button>
+
+            <div class="hidden-answer" id="pbq6">
+
+              <strong>SSH — Port 22</strong>
+
+              <p>
+                SSH securely encrypts remote terminal sessions.
+              </p>
+
+              <p>
+                Avoid Telnet because it is insecure.
+              </p>
+
+            </div>
+          </article>
+
+        </div>
+
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    function toggleAnswer(id) {
+      document
+        .getElementById(id)
+        .classList
+        .toggle("show");
+    }
+  </script>
+
+</body>
+</html>
