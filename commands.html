@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Commands | Network+ Study Hub</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .command-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .command-card {
+      padding: 22px;
+      border-radius: 22px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(15,23,42,.95),
+          rgba(2,8,23,.90)
+        );
+
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .command-card h2 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      color: var(--cyan);
+    }
+
+    .terminal {
+      margin: 16px 0;
+
+      padding: 14px;
+
+      border-radius: 14px;
+
+      background: #020617;
+
+      border: 1px solid rgba(255,255,255,.08);
+
+      font-family: monospace;
+
+      overflow-x: auto;
+    }
+
+    .terminal code {
+      color: #86efac;
+      font-size: 1rem;
+    }
+
+    .memory-tip {
+      margin-top: 16px;
+
+      padding: 14px;
+
+      border-left: 5px solid var(--orange);
+
+      background: rgba(245,158,11,.08);
+
+      border-radius: 14px;
+
+      color: #fde68a;
+    }
+
+    .command-tag {
+      display: inline-block;
+
+      margin-top: 10px;
+
+      padding: 6px 10px;
+
+      border-radius: 999px;
+
+      background: rgba(255,255,255,.06);
+
+      color: var(--muted);
+
+      font-size: .82rem;
+
+      font-weight: 700;
+    }
+
+    @media (max-width: 900px) {
+      .command-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo">🧠</div>
+
+        <div>
+          <h2><span class="gradient-text">NET+</span></h2>
+          <span>N10-009</span>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="ports.html">Ports</a>
+        <a href="subnetting.html">Subnetting</a>
+        <a href="flashcards.html">Flashcards</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="acronyms.html">Acronyms</a>
+        <a href="commands.html" class="active">Commands</a>
+        <a href="osi.html">OSI Model</a>
+      </nav>
+
+      <div class="side-note">
+        <strong>Troubleshooting Rule</strong>
+        <span>Start simple before assuming the network is broken.</span>
+      </div>
+    </aside>
+
+    <main id="main">
+      <section class="hero-card">
+        <p class="eyebrow">Troubleshooting Commands</p>
+
+        <h1>Stop memorizing commands blindly.</h1>
+
+        <p class="subtitle">
+          Learn what each command is actually checking. Most Network+ troubleshooting questions become easier once you know the purpose behind the tool.
+        </p>
+      </section>
+
+      <section class="panel">
+        <p class="section-tag">Windows Commands</p>
+
+        <div class="command-grid">
+
+          <article class="command-card">
+            <h2>ipconfig</h2>
+
+            <div class="terminal">
+              <code>ipconfig /all</code>
+            </div>
+
+            <p>
+              Shows IP address, subnet mask, gateway, DNS server, MAC address, and DHCP information.
+            </p>
+
+            <div class="memory-tip">
+              Think: “What network settings does this device currently have?”
+            </div>
+
+            <span class="command-tag">IP Troubleshooting</span>
+          </article>
+
+          <article class="command-card">
+            <h2>ping</h2>
+
+            <div class="terminal">
+              <code>ping 8.8.8.8</code>
+            </div>
+
+            <p>
+              Tests whether another device responds over the network using ICMP.
+            </p>
+
+            <div class="memory-tip">
+              Start simple. Ping checks basic connectivity first.
+            </div>
+
+            <span class="command-tag">Connectivity</span>
+          </article>
+
+          <article class="command-card">
+            <h2>tracert</h2>
+
+            <div class="terminal">
+              <code>tracert google.com</code>
+            </div>
+
+            <p>
+              Shows the path packets take across routers to reach a destination.
+            </p>
+
+            <div class="memory-tip">
+              Think: “Where along the path is traffic slowing or failing?”
+            </div>
+
+            <span class="command-tag">Routing</span>
+          </article>
+
+          <article class="command-card">
+            <h2>nslookup</h2>
+
+            <div class="terminal">
+              <code>nslookup google.com</code>
+            </div>
+
+            <p>
+              Checks DNS name resolution.
+            </p>
+
+            <div class="memory-tip">
+              If ping by IP works but names fail → think DNS.
+            </div>
+
+            <span class="command-tag">DNS</span>
+          </article>
+
+          <article class="command-card">
+            <h2>netstat</h2>
+
+            <div class="terminal">
+              <code>netstat -an</code>
+            </div>
+
+            <p>
+              Displays active connections and listening ports.
+            </p>
+
+            <div class="memory-tip">
+              Great for checking suspicious connections or open ports.
+            </div>
+
+            <span class="command-tag">Connections</span>
+          </article>
+
+          <article class="command-card">
+            <h2>arp</h2>
+
+            <div class="terminal">
+              <code>arp -a</code>
+            </div>
+
+            <p>
+              Displays the ARP table showing IP-to-MAC mappings.
+            </p>
+
+            <div class="memory-tip">
+              ARP connects Layer 3 IPs to Layer 2 MAC addresses.
+            </div>
+
+            <span class="command-tag">Layer 2</span>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="panel">
+        <p class="section-tag">Cisco Commands</p>
+
+        <div class="command-grid">
+
+          <article class="command-card">
+            <h2>show ip route</h2>
+
+            <div class="terminal">
+              <code>show ip route</code>
+            </div>
+
+            <p>
+              Displays the routing table.
+            </p>
+
+            <div class="memory-tip">
+              Think: “How does this router know where to send traffic?”
+            </div>
+
+            <span class="command-tag">Routing</span>
+          </article>
+
+          <article class="command-card">
+            <h2>show vlan brief</h2>
+
+            <div class="terminal">
+              <code>show vlan brief</code>
+            </div>
+
+            <p>
+              Displays VLANs and assigned switch ports.
+            </p>
+
+            <div class="memory-tip">
+              Great for checking whether devices are in the wrong VLAN.
+            </div>
+
+            <span class="command-tag">Switching</span>
+          </article>
+
+          <article class="command-card">
+            <h2>show interfaces</h2>
+
+            <div class="terminal">
+              <code>show interfaces</code>
+            </div>
+
+            <p>
+              Displays interface status, speed, duplex, errors, and statistics.
+            </p>
+
+            <div class="memory-tip">
+              Use this for duplex mismatches and interface errors.
+            </div>
+
+            <span class="command-tag">Interfaces</span>
+          </article>
+
+          <article class="command-card">
+            <h2>show mac address-table</h2>
+
+            <div class="terminal">
+              <code>show mac address-table</code>
+            </div>
+
+            <p>
+              Displays learned MAC addresses and switch ports.
+            </p>
+
+            <div class="memory-tip">
+              Helps track where a device physically connects.
+            </div>
+
+            <span class="command-tag">Layer 2</span>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="panel">
+        <p class="section-tag">Exam Strategy</p>
+
+        <div class="rules-grid">
+
+          <article class="study-rule">
+            <h2>No Internet?</h2>
+            <p>
+              Start with:
+              <strong>ipconfig → ping → nslookup</strong>
+            </p>
+          </article>
+
+          <article class="study-rule">
+            <h2>Switch Problem?</h2>
+            <p>
+              Think:
+              <strong>VLANs, interfaces, MAC table</strong>
+            </p>
+          </article>
+
+          <article class="study-rule">
+            <h2>Routing Problem?</h2>
+            <p>
+              Think:
+              <strong>show ip route</strong>
+            </p>
+          </article>
+
+          <article class="study-rule">
+            <h2>DNS Problem?</h2>
+            <p>
+              If IP works but names fail:
+              <strong>nslookup</strong>
+            </p>
+          </article>
+
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
