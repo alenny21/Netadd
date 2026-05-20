@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0" />
+
+  <title>Study Path | Network+ Study Hub</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+
+    .path-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .path-card {
+      padding: 24px;
+
+      border-radius: 24px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(15,23,42,.95),
+          rgba(2,8,23,.92)
+        );
+
+      border: 1px solid rgba(255,255,255,.08);
+
+      position: relative;
+
+      overflow: hidden;
+    }
+
+    .path-card::after {
+      content: "";
+
+      position: absolute;
+
+      inset: auto -20% -50% -20%;
+
+      height: 120px;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(34,211,238,.18),
+          transparent 70%
+        );
+    }
+
+    .path-card h2 {
+      margin-top: 0;
+      color: var(--cyan);
+    }
+
+    .phase {
+      display: inline-block;
+
+      margin-bottom: 14px;
+
+      padding: 6px 12px;
+
+      border-radius: 999px;
+
+      background: rgba(255,255,255,.06);
+
+      color: var(--muted);
+
+      font-size: .82rem;
+
+      font-weight: 800;
+    }
+
+    .task-list {
+      margin-top: 14px;
+      padding-left: 18px;
+      line-height: 1.8;
+    }
+
+    .focus-box {
+      margin-top: 18px;
+
+      padding: 14px;
+
+      border-radius: 14px;
+
+      background: rgba(255,255,255,.05);
+
+      border-left: 5px solid var(--orange);
+
+      color: #fde68a;
+
+      font-weight: 700;
+    }
+
+    .danger-box {
+      margin-top: 18px;
+
+      padding: 14px;
+
+      border-radius: 14px;
+
+      background: rgba(244,63,94,.10);
+
+      border-left: 5px solid #f43f5e;
+
+      color: #fecdd3;
+    }
+
+    .win-box {
+      margin-top: 18px;
+
+      padding: 14px;
+
+      border-radius: 14px;
+
+      background: rgba(34,197,94,.10);
+
+      border-left: 5px solid #22c55e;
+
+      color: #dcfce7;
+    }
+
+    .schedule-card {
+      padding: 28px;
+
+      border-radius: 28px;
+
+      margin-top: 24px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(59,130,246,.18),
+          rgba(168,85,247,.18)
+        );
+    }
+
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .schedule-day {
+      padding: 18px;
+
+      border-radius: 18px;
+
+      background: rgba(255,255,255,.06);
+    }
+
+    .schedule-day h3 {
+      margin-top: 0;
+      color: white;
+    }
+
+    @media (max-width: 900px) {
+
+      .path-grid,
+      .schedule-grid {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+<a class="skip-link"
+  href="#main">
+  Skip to main content
+</a>
+
+<div class="shell">
+
+  <aside class="sidebar">
+
+    <div class="brand">
+      <div class="logo">🧠</div>
+
+      <div>
+        <h2>
+          <span class="gradient-text">
+            NET+
+          </span>
+        </h2>
+
+        <span>N10-009</span>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="ports.html">Ports</a>
+      <a href="subnetting.html">Subnetting</a>
+      <a href="flashcards.html">Flashcards</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="acronyms.html">Acronyms</a>
+      <a href="commands.html">Commands</a>
+      <a href="osi.html">OSI Model</a>
+      <a href="pbq.html">PBQ Lab</a>
+      <a href="exam-cram.html">Exam Cram</a>
+      <a href="cables.html">Cables</a>
+      <a href="study-path.html"
+        class="active">
+        Study Path
+      </a>
+    </nav>
+
+    <div class="side-note">
+      <strong>Focus Rule</strong>
+
+      <span>
+        One strong topic is better than five weak ones.
+      </span>
+    </div>
+
+  </aside>
+
+  <main id="main">
+
+    <section class="hero-card">
+
+      <p class="eyebrow">
+        Study Path
+      </p>
+
+      <h1>
+        Stop trying to study everything at once.
+      </h1>
+
+      <p class="subtitle">
+        This roadmap keeps you focused on the highest-value topics first so your studying actually sticks.
+      </p>
+
+    </section>
+
+    <section class="panel">
+
+      <p class="section-tag">
+        Recommended Order
+      </p>
+
+      <div class="path-grid">
+
+        <!-- PHASE 1 -->
+
+        <article class="path-card">
+
+          <span class="phase">
+            Phase 1
+          </span>
+
+          <h2>
+            Core Foundation
+          </h2>
+
+          <ul class="task-list">
+            <li>OSI model</li>
+            <li>TCP vs UDP</li>
+            <li>Basic ports</li>
+            <li>IP addresses</li>
+            <li>Subnetting basics</li>
+          </ul>
+
+          <div class="focus-box">
+            Focus on understanding — not memorizing every detail yet.
+          </div>
+
+        </article>
+
+        <!-- PHASE 2 -->
+
+        <article class="path-card">
+
+          <span class="phase">
+            Phase 2
+          </span>
+
+          <h2>
+            Infrastructure
+          </h2>
+
+          <ul class="task-list">
+            <li>Switches vs routers</li>
+            <li>VLANs</li>
+            <li>Wireless standards</li>
+            <li>Cables and connectors</li>
+            <li>Routing basics</li>
+          </ul>
+
+          <div class="focus-box">
+            Learn what each device actually DOES.
+          </div>
+
+        </article>
+
+        <!-- PHASE 3 -->
+
+        <article class="path-card">
+
+          <span class="phase">
+            Phase 3
+          </span>
+
+          <h2>
+            Security
+          </h2>
+
+          <ul class="task-list">
+            <li>AAA</li>
+            <li>VPNs</li>
+            <li>Firewalls</li>
+            <li>MFA</li>
+            <li>Common attacks</li>
+          </ul>
+
+          <div class="focus-box">
+            Security questions are everywhere on the exam.
+          </div>
+
+        </article>
+
+        <!-- PHASE 4 -->
+
+        <article class="path-card">
+
+          <span class="phase">
+            Phase 4
+          </span>
+
+          <h2>
+            Troubleshooting
+          </h2>
+
+          <ul class="task-list">
+            <li>Commands</li>
+            <li>PBQs</li>
+            <li>Scenario questions</li>
+            <li>Subnetting drills</li>
+            <li>Weak-area review</li>
+          </ul>
+
+          <div class="focus-box">
+            This phase is what pushes people into passing range.
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+    <section class="schedule-card">
+
+      <h2>
+        ADHD-Friendly Study Schedule
+      </h2>
+
+      <p>
+        Long study sessions usually lower retention. Short focused repetition works better.
+      </p>
+
+      <div class="schedule-grid">
+
+        <article class="schedule-day">
+
+          <h3>
+            20 Minutes
+          </h3>
+
+          <p>
+            Learn one small topic only.
+          </p>
+
+        </article>
+
+        <article class="schedule-day">
+
+          <h3>
+            5 Minute Break
+          </h3>
+
+          <p>
+            Walk away from the screen completely.
+          </p>
+
+        </article>
+
+        <article class="schedule-day">
+
+          <h3>
+            20 Minutes
+          </h3>
+
+          <p>
+            Quiz yourself immediately.
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+    <section class="panel">
+
+      <p class="section-tag">
+        Important Reminders
+      </p>
+
+      <div class="rules-grid">
+
+        <article class="study-rule">
+
+          <h2>
+            Biggest Mistake
+          </h2>
+
+          <p>
+            Rereading notes without retrieval practice.
+          </p>
+
+        </article>
+
+        <article class="study-rule">
+
+          <h2>
+            Highest ROI
+          </h2>
+
+          <p>
+            PBQs, ports, troubleshooting, and subnetting.
+          </p>
+
+        </article>
+
+        <article class="study-rule">
+
+          <h2>
+            What To Do When Overwhelmed
+          </h2>
+
+          <p>
+            Go back to the Exam Cram page and reset.
+          </p>
+
+        </article>
+
+        <article class="study-rule">
+
+          <h2>
+            Exam Strategy
+          </h2>
+
+          <p>
+            Eliminate obvious wrong answers first.
+          </p>
+
+        </article>
+
+      </div>
+
+      <div class="danger-box">
+        Do not spend hours perfecting tiny details while avoiding PBQs and troubleshooting.
+      </div>
+
+      <div class="win-box">
+        You do NOT need to know everything perfectly to pass this exam.
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+</body>
+</html>
