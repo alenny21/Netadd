@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Subnetting | Network+ Study Hub</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">🧠</div>
+        <div>
+          <h2><span class="gradient-text">NET+</span></h2>
+          <span>N10-009</span>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="ports.html">Ports</a>
+        <a href="subnetting.html" class="active">Subnetting</a>
+        <a href="flashcards.html">Flashcards</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="acronyms.html">Acronyms</a>
+        <a href="commands.html">Commands</a>
+        <a href="osi.html">OSI Model</a>
+      </nav>
+
+      <div class="side-note">
+        <strong>Subnetting Rule</strong>
+        <span>Memorize the jump ladder first. Do not overcomplicate it.</span>
+      </div>
+    </aside>
+
+    <main id="main">
+      <section class="hero-card">
+        <p class="eyebrow">Subnetting</p>
+        <h1>Stop fighting the math.</h1>
+        <p class="subtitle">
+          Learn the pattern first. The goal is fast recognition, not perfect textbook math.
+        </p>
+      </section>
+
+      <section class="panel">
+        <p class="section-tag">The Ladder</p>
+
+        <div class="rules-grid">
+          <article class="study-rule">
+            <h2>Memorize this first</h2>
+            <p><strong>128 → 64 → 32 → 16 → 8 → 4</strong></p>
+          </article>
+
+          <article class="study-rule">
+            <h2>Shortcut</h2>
+            <p>Usable hosts = jump size minus 2.</p>
+          </article>
+
+          <article class="study-rule">
+            <h2>Example</h2>
+            <p>Jump size 32 gives you 30 usable hosts.</p>
+          </article>
+
+          <article class="study-rule">
+            <h2>APIPA</h2>
+            <p><strong>169.254</strong> means DHCP failed.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel">
+        <p class="section-tag">Subnet Cheat Table</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>CIDR</th>
+              <th>Subnet Mask</th>
+              <th>Jump Size</th>
+              <th>Usable Hosts</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>/25</td><td>255.255.255.128</td><td>128</td><td>126</td></tr>
+            <tr><td>/26</td><td>255.255.255.192</td><td>64</td><td>62</td></tr>
+            <tr><td>/27</td><td>255.255.255.224</td><td>32</td><td>30</td></tr>
+            <tr><td>/28</td><td>255.255.255.240</td><td>16</td><td>14</td></tr>
+            <tr><td>/29</td><td>255.255.255.248</td><td>8</td><td>6</td></tr>
+            <tr><td>/30</td><td>255.255.255.252</td><td>4</td><td>2</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="panel">
+        <p class="section-tag">Quick Practice</p>
+
+        <div class="rules-grid">
+          <article class="study-rule">
+            <h2>Need 6 usable hosts?</h2>
+            <p>Pick <strong>/29</strong> because jump size 8 gives 6 usable hosts.</p>
+          </article>
+
+          <article class="study-rule">
+            <h2>Need 30 usable hosts?</h2>
+            <p>Pick <strong>/27</strong> because jump size 32 gives 30 usable hosts.</p>
+          </article>
+
+          <article class="study-rule">
+            <h2>Need 2 usable hosts?</h2>
+            <p>Pick <strong>/30</strong>. Common for point-to-point links.</p>
+          </article>
+
+          <article class="study-rule">
+            <h2>Device has 169.254.x.x?</h2>
+            <p>Think: DHCP problem first.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel">
+        <p class="section-tag">What to Write on Scratch Paper</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Write This</th>
+              <th>Why It Helps</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>128 64 32 16 8 4</td>
+              <td>These are your jump sizes.</td>
+            </tr>
+            <tr>
+              <td>/25 /26 /27 /28 /29 /30</td>
+              <td>Match each CIDR to the ladder.</td>
+            </tr>
+            <tr>
+              <td>126 62 30 14 6 2</td>
+              <td>These are usable hosts.</td>
+            </tr>
+            <tr>
+              <td>169.254 = DHCP failed</td>
+              <td>APIPA questions become easy.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
