@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ports | Network+ Study Hub</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">🧠</div>
+        <div>
+          <h2><span class="gradient-text">NET+</span></h2>
+          <span>N10-009</span>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="ports.html" class="active">Ports</a>
+        <a href="subnetting.html">Subnetting</a>
+        <a href="flashcards.html">Flashcards</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="acronyms.html">Acronyms</a>
+        <a href="commands.html">Commands</a>
+        <a href="osi.html">OSI Model</a>
+      </nav>
+
+      <div class="side-note">
+        <strong>Port Strategy</strong>
+        <span>Group ports by purpose instead of memorizing random numbers.</span>
+      </div>
+    </aside>
+
+    <main id="main">
+
+      <section class="hero-card">
+        <p class="eyebrow">Common Ports</p>
+
+        <h1>Learn the story, not the number.</h1>
+
+        <p class="subtitle">
+          Most Network+ port questions become easier when you group protocols by purpose.
+        </p>
+      </section>
+
+      <section class="panel">
+        <p class="section-tag">Remote Access</p>
+
+        <div class="rules-grid">
+
+          <article class="study-rule">
+            <h2>22 — SSH</h2>
+            <p>Secure remote access.</p>
+            <p><strong>Memory trick:</strong> 22 comes before insecure 23.</p>
+          </article>
+
+          <article class="study-rule">
+            <h2>23 — Telnet</h2>
+            <p>Old insecure remote terminal.</p>
+            <p>No encryption.</p>
+          </article>
+
+          <article class="study-rule">
+            <h2>3389 — RDP</h2>
+            <p>Remote Desktop Protocol.</p>
+            <p>Used for Windows remote desktop access.</p>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="panel">
+        <p class="section-tag">Web Traffic</p>
+
+        <div class="rules-grid">
+
+          <article class="study-rule">
+            <h2>80 — HTTP</h2>
+            <p>Regular web traffic.</p>
+          </article>
+
+          <article class="study-rule">
+            <h2>443 — HTTPS</h2>
+            <p>Secure encrypted web traffic.</p>
+            <p><strong>Memory trick:</strong> Bigger safer number.</p>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="panel">
+        <p class="section-tag">File Transfer</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Port</th>
+              <th>Protocol</th>
+              <th>Purpose</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>20/21</td>
+              <td>FTP</td>
+              <td>Old file transfer</td>
+            </tr>
+
+            <tr>
+              <td>22</td>
+              <td>SFTP</td>
+              <td>Secure file transfer over SSH</td>
+            </tr>
+
+            <tr>
+              <td>69</td>
+              <td>TFTP</td>
+              <td>Simple lightweight file transfer</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <br />
+
+        <div class="study-rule">
+          <h2>Memory Trick</h2>
+          <p>
+            FTP is old. SFTP upgraded to secure SSH port 22.
+            TFTP is tiny/simple FTP.
+          </p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <p class="section-tag">Network Services</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Port</th>
+              <th>Protocol</th>
+              <th>Purpose</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>53</td>
+              <td>DNS</td>
+              <td>Name resolution</td>
+            </tr>
+
+            <tr>
+              <td>67/68</td>
+              <td>DHCP</td>
+              <td>Automatic IP addressing</td>
+            </tr>
+
+            <tr>
+              <td>123</td>
+              <td>NTP</td>
+              <td>Time synchronization</td>
+            </tr>
+
+            <tr>
+              <td>161</td>
+              <td>SNMP</td>
+              <td>Network monitoring</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <br />
+
+        <div class="rules-grid">
+
+          <article class="study-rule">
+            <h2>53 — DNS</h2>
+            <p>Converts names into IP addresses.</p>
+          </article>
+
+          <article class="study-rule">
+            <h2>67/68 — DHCP</h2>
+            <p>Two ports because server and client both communicate.</p>
+          </article>
+
+          <article class="study-rule">
+            <h2>123 — NTP</h2>
+            <p><strong>Memory trick:</strong> 1-2-3 time.</p>
+          </article>
+
+          <article class="study-rule">
+            <h2>161 — SNMP</h2>
+            <p>Used for monitoring and management.</p>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="panel">
+        <p class="section-tag">Authentication + Security</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Port</th>
+              <th>Protocol</th>
+              <th>Purpose</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>49</td>
+              <td>TACACS+</td>
+              <td>Cisco AAA authentication</td>
+            </tr>
+
+            <tr>
+              <td>88</td>
+              <td>Kerberos</td>
+              <td>Authentication</td>
+            </tr>
+
+            <tr>
+              <td>1812</td>
+              <td>RADIUS</td>
+              <td>Authentication</td>
+            </tr>
+
+            <tr>
+              <td>1813</td>
+              <td>RADIUS Accounting</td>
+              <td>Accounting logs</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="panel">
+        <p class="section-tag">What Actually Matters for the Exam</p>
+
+        <div class="rules-grid">
+
+          <article class="study-rule">
+            <h2>Know the common ones cold</h2>
+            <p>
+              20/21, 22, 23, 25, 53, 67/68,
+              80, 110, 123, 143, 161, 389,
+              443, 3389.
+            </p>
+          </article>
+
+          <article class="study-rule">
+            <h2>Focus on purpose</h2>
+            <p>
+              The exam usually tests what the protocol DOES,
+              not just the number.
+            </p>
+          </article>
+
+          <article class="study-rule">
+            <h2>Security matters</h2>
+            <p>
+              Know which protocols are secure vs insecure:
+              SSH vs Telnet, HTTPS vs HTTP, SFTP vs FTP.
+            </p>
+          </article>
+
+          <article class="study-rule">
+            <h2>Group by category</h2>
+            <p>
+              Remote access, web, file transfer, and network services
+              are easier to remember than giant random lists.
+            </p>
+          </article>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+</body>
+</html>
