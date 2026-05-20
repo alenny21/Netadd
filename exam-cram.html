@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0" />
+
+  <title>Exam Cram | Network+ Study Hub</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+
+    .cram-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .cram-card {
+      padding: 22px;
+
+      border-radius: 24px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(15,23,42,.95),
+          rgba(2,8,23,.92)
+        );
+
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .cram-card h2 {
+      margin-top: 0;
+      color: var(--cyan);
+    }
+
+    .memory-line {
+      margin-top: 14px;
+
+      padding: 14px;
+
+      border-radius: 14px;
+
+      background: rgba(255,255,255,.05);
+
+      border-left: 5px solid var(--orange);
+
+      color: #fde68a;
+
+      line-height: 1.6;
+    }
+
+    .quick-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+
+    .quick-table td {
+      padding: 10px;
+      border-bottom:
+        1px solid rgba(255,255,255,.08);
+    }
+
+    .quick-table td:first-child {
+      color: var(--cyan);
+      font-weight: 900;
+    }
+
+    .big-memory {
+      text-align: center;
+
+      padding: 30px;
+
+      border-radius: 28px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(59,130,246,.22),
+          rgba(168,85,247,.22)
+        );
+
+      margin-bottom: 24px;
+    }
+
+    .big-memory h1 {
+      margin: 0;
+      font-size: clamp(2rem, 6vw, 4rem);
+    }
+
+    .big-memory p {
+      color: #dbeafe;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .cram-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<a class="skip-link"
+  href="#main">
+  Skip to main content
+</a>
+
+<div class="shell">
+
+  <aside class="sidebar">
+
+    <div class="brand">
+      <div class="logo">🧠</div>
+
+      <div>
+        <h2>
+          <span class="gradient-text">
+            NET+
+          </span>
+        </h2>
+
+        <span>N10-009</span>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="ports.html">Ports</a>
+      <a href="subnetting.html">Subnetting</a>
+      <a href="flashcards.html">Flashcards</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="acronyms.html">Acronyms</a>
+      <a href="commands.html">Commands</a>
+      <a href="osi.html">OSI Model</a>
+      <a href="pbq.html">PBQ Lab</a>
+      <a href="exam-cram.html"
+        class="active">
+        Exam Cram
+      </a>
+    </nav>
+
+    <div class="side-note">
+      <strong>Cram Rule</strong>
+      <span>
+        Quick recall beats rereading.
+      </span>
+    </div>
+
+  </aside>
+
+  <main id="main">
+
+    <section class="big-memory">
+
+      <h1>
+        128 → 64 → 32 → 16 → 8 → 4
+      </h1>
+
+      <p>
+        Bigger jump = fewer hosts
+      </p>
+
+    </section>
+
+    <section class="panel">
+
+      <p class="section-tag">
+        Fast Memory Rules
+      </p>
+
+      <div class="cram-grid">
+
+        <!-- PORTS -->
+
+        <article class="cram-card">
+
+          <h2>Important Ports</h2>
+
+          <table class="quick-table">
+            <tr>
+              <td>22</td>
+              <td>SSH</td>
+            </tr>
+
+            <tr>
+              <td>23</td>
+              <td>Telnet</td>
+            </tr>
+
+            <tr>
+              <td>53</td>
+              <td>DNS</td>
+            </tr>
+
+            <tr>
+              <td>67/68</td>
+              <td>DHCP</td>
+            </tr>
+
+            <tr>
+              <td>80</td>
+              <td>HTTP</td>
+            </tr>
+
+            <tr>
+              <td>443</td>
+              <td>HTTPS</td>
+            </tr>
+
+            <tr>
+              <td>3389</td>
+              <td>RDP</td>
+            </tr>
+          </table>
+
+          <div class="memory-line">
+            22 secure before insecure 23.
+          </div>
+
+        </article>
+
+        <!-- APIPA -->
+
+        <article class="cram-card">
+
+          <h2>APIPA</h2>
+
+          <div class="memory-line">
+            169.254 = DHCP failed
+          </div>
+
+          <p>
+            The computer gave itself an address.
+          </p>
+
+        </article>
+
+        <!-- ROUTING -->
+
+        <article class="cram-card">
+
+          <h2>Administrative Distance</h2>
+
+          <table class="quick-table">
+
+            <tr>
+              <td>0</td>
+              <td>Connected</td>
+            </tr>
+
+            <tr>
+              <td>1</td>
+              <td>Static</td>
+            </tr>
+
+            <tr>
+              <td>90</td>
+              <td>EIGRP</td>
+            </tr>
+
+            <tr>
+              <td>110</td>
+              <td>OSPF</td>
+            </tr>
+
+            <tr>
+              <td>120</td>
+              <td>RIP</td>
+            </tr>
+
+          </table>
+
+          <div class="memory-line">
+            Connected trusts itself most.
+            RIP trusts everybody.
+          </div>
+
+        </article>
+
+        <!-- OSI -->
+
+        <article class="cram-card">
+
+          <h2>OSI Quick View</h2>
+
+          <table class="quick-table">
+
+            <tr>
+              <td>7</td>
+              <td>Application</td>
+            </tr>
+
+            <tr>
+              <td>6</td>
+              <td>Presentation</td>
+            </tr>
+
+            <tr>
+              <td>5</td>
+              <td>Session</td>
+            </tr>
+
+            <tr>
+              <td>4</td>
+              <td>Transport</td>
+            </tr>
+
+            <tr>
+              <td>3</td>
+              <td>Network</td>
+            </tr>
+
+            <tr>
+              <td>2</td>
+              <td>Data Link</td>
+            </tr>
+
+            <tr>
+              <td>1</td>
+              <td>Physical</td>
+            </tr>
+
+          </table>
+
+          <div class="memory-line">
+            Start troubleshooting from Layer 1 upward.
+          </div>
+
+        </article>
+
+        <!-- CABLES -->
+
+        <article class="cram-card">
+
+          <h2>Cable Cheat</h2>
+
+          <div class="memory-line">
+            Fiber = light = no EMI
+          </div>
+
+          <div class="memory-line">
+            Copper = electricity = affected by EMI
+          </div>
+
+          <div class="memory-line">
+            STP = Shielded
+          </div>
+
+        </article>
+
+        <!-- TROUBLESHOOTING -->
+
+        <article class="cram-card">
+
+          <h2>Troubleshooting</h2>
+
+          <ol>
+            <li>Identify problem</li>
+            <li>Establish theory</li>
+            <li>Test theory</li>
+            <li>Create plan</li>
+            <li>Implement fix</li>
+            <li>Verify</li>
+            <li>Document</li>
+          </ol>
+
+          <div class="memory-line">
+            Do not skip straight to fixing.
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+</body>
+</html>
