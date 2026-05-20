@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz | Network+ Study Hub</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .quiz-card {
+      padding: 28px;
+      border-radius: 28px;
+      background: rgba(15,23,42,.94);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+
+    .quiz-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .quiz-question {
+      font-size: clamp(1.7rem, 4vw, 2.7rem);
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    .choices {
+      display: grid;
+      gap: 14px;
+    }
+
+    .choice-btn {
+      width: 100%;
+      text-align: left;
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      color: white;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .choice-btn:hover {
+      background: rgba(255,255,255,.09);
+    }
+
+    .choice-btn.correct {
+      background: rgba(34,197,94,.20);
+      border-color: rgba(34,197,94,.65);
+    }
+
+    .choice-btn.wrong {
+      background: rgba(244,63,94,.20);
+      border-color: rgba(244,63,94,.65);
+    }
+
+    .feedback {
+      margin-top: 20px;
+      padding: 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.05);
+      border-left: 5px solid var(--cyan);
+      color: #dbeafe;
+      min-height: 70px;
+    }
+
+    .quiz-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .quiz-controls button {
+      padding: 13px 18px;
+      border-radius: 14px;
+      border: none;
+      color: white;
+      font-weight: 900;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+    }
+
+    .score-boxes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .score-box {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .score-box strong {
+      display: block;
+      font-size: 1.8rem;
+      color: var(--cyan);
+    }
+
+    @media (max-width: 700px) {
+      .score-boxes {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">🧠</div>
+        <div>
+          <h2><span class="gradient-text">NET+</span></h2>
+          <span>N10-009</span>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="ports.html">Ports</a>
+        <a href="subnetting.html">Subnetting</a>
+        <a href="flashcards.html">Flashcards</a>
+        <a href="quiz.html" class="active">Quiz</a>
+        <a href="acronyms.html">Acronyms</a>
+        <a href="commands.html">Commands</a>
+        <a href="osi.html">OSI Model</a>
+      </nav>
+
+      <div class="side-note">
+        <strong>Quiz Rule</strong>
+        <span>If you miss it, read the explanation once, then keep moving.</span>
+      </div>
+    </aside>
+
+    <main id="main">
+      <section class="hero-card">
+        <p class="eyebrow">Quiz Mode</p>
+        <h1>Beat the question, not yourself.</h1>
+        <p class="subtitle">
+          Answer fast, learn from the explanation, and move on. This is how you build exam confidence.
+        </p>
+      </section>
+
+      <section class="score-boxes">
+        <div class="score-box">
+          <span>Score</span>
+          <strong id="score">0</strong>
+        </div>
+
+        <div class="score-box">
+          <span>Streak</span>
+          <strong id="streak">0</strong>
+        </div>
+
+        <div class="score-box">
+          <span>Question</span>
+          <strong id="progress">1</strong>
+        </div>
+      </section>
+
+      <section class="quiz-card">
+        <div class="quiz-top">
+          <span id="domain">Domain 1</span>
+          <span id="totalCount">Question 1 / 10</span>
+        </div>
+
+        <h2 class="quiz-question" id="question">Loading question...</h2>
+
+        <div class="choices" id="choices"></div>
+
+        <div class="feedback" id="feedback">
+          Pick the best answer.
+        </div>
+
+        <div class="quiz-controls">
+          <button onclick="nextQuestion()">Next Question</button>
+          <button onclick="resetQuiz()">Restart</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        domain: "Domain 1",
+        q: "A device has a 169.254.x.x address. What most likely happened?",
+        choices: ["DNS failed", "DHCP failed", "HTTPS failed", "NTP failed"],
+        answer: "DHCP failed",
+        explain: "169.254.x.x is APIPA. It usually means the device could not reach DHCP."
+      },
+      {
+        domain: "Domain 1",
+        q: "Which port does HTTPS use?",
+        choices: ["80", "443", "53", "3389"],
+        answer: "443",
+        explain: "HTTPS uses TCP 443 for secure web traffic."
+      },
+      {
+        domain: "Domain 2",
+        q: "Which protocol prevents Layer 2 switching loops?",
+        choices: ["OSPF", "STP", "NTP", "SNMP"],
+        answer: "STP",
+        explain: "STP blocks redundant switch paths to prevent loops."
+      },
+      {
+        domain: "Domain 2",
+        q: "What does a VLAN do?",
+        choices: [
+          "Encrypts traffic",
+          "Separates a switch into logical networks",
+          "Assigns IP addresses",
+          "Finds MAC addresses"
+        ],
+        answer: "Separates a switch into logical networks",
+        explain: "A VLAN creates a separate broadcast domain on a switch."
+      },
+      {
+        domain: "Domain 3",
+        q: "Which protocol keeps device clocks synchronized?",
+        choices: ["NTP", "DNS", "DHCP", "LDAP"],
+        answer: "NTP",
+        explain: "NTP keeps clocks synchronized, which matters for logs and authentication."
+      },
+      {
+        domain: "Domain 3",
+        q: "What does RTO mean?",
+        choices: [
+          "Maximum acceptable downtime",
+          "Maximum acceptable data loss",
+          "Router timeout option",
+          "Remote transfer output"
+        ],
+        answer: "Maximum acceptable downtime",
+        explain: "RTO is Recovery Time Objective: how long a service can be down."
+      },
+      {
+        domain: "Domain 4",
+        q: "What does MFA require?",
+        choices: [
+          "Only a password",
+          "Multiple forms of verification",
+          "A public IP",
+          "A VLAN"
+        ],
+        answer: "Multiple forms of verification",
+        explain: "MFA uses more than one factor, like password plus phone/app code."
+      },
+      {
+        domain: "Domain 4",
+        q: "What does a firewall mainly do?",
+        choices: [
+          "Filters traffic",
+          "Assigns IP addresses",
+          "Synchronizes clocks",
+          "Creates DNS records"
+        ],
+        answer: "Filters traffic",
+        explain: "A firewall allows or blocks traffic based on rules."
+      },
+      {
+        domain: "Domain 5",
+        q: "Which command checks DNS resolution?",
+        choices: ["ping", "ipconfig", "nslookup", "tracert"],
+        answer: "nslookup",
+        explain: "nslookup is used to test DNS name resolution."
+      },
+      {
+        domain: "Domain 5",
+        q: "What is the first troubleshooting step?",
+        choices: [
+          "Document findings",
+          "Identify the problem",
+          "Implement a solution",
+          "Replace hardware"
+        ],
+        answer: "Identify the problem",
+        explain: "Do not jump straight to fixing. First identify the problem clearly."
+      }
+    ];
+
+    let current = 0;
+    let score = 0;
+    let streak = 0;
+    let answered = false;
+
+    function renderQuestion() {
+      answered = false;
+
+      const item = questions[current];
+
+      document.getElementById("domain").textContent = item.domain;
+      document.getElementById("question").textContent = item.q;
+      document.getElementById("score").textContent = score;
+      document.getElementById("streak").textContent = streak;
+      document.getElementById("progress").textContent = current + 1;
+      document.getElementById("totalCount").textContent =
+        `Question ${current + 1} / ${questions.length}`;
+
+      document.getElementById("feedback").textContent = "Pick the best answer.";
+
+      const choicesBox = document.getElementById("choices");
+      choicesBox.innerHTML = "";
+
+      item.choices.forEach(choice => {
+        const btn = document.createElement("button");
+        btn.className = "choice-btn";
+        btn.textContent = choice;
+        btn.onclick = () => checkAnswer(btn, choice);
+        choicesBox.appendChild(btn);
+      });
+    }
+
+    function checkAnswer(button, choice) {
+      if (answered) return;
+
+      answered = true;
+      const item = questions[current];
+
+      document.querySelectorAll(".choice-btn").forEach(btn => {
+        if (btn.textContent === item.answer) {
+          btn.classList.add("correct");
+        }
+      });
+
+      if (choice === item.answer) {
+        score++;
+        streak++;
+        button.classList.add("correct");
+        document.getElementById("feedback").textContent =
+          `Correct. ${item.explain}`;
+      } else {
+        streak = 0;
+        button.classList.add("wrong");
+        document.getElementById("feedback").textContent =
+          `Not quite. ${item.explain}`;
+      }
+
+      document.getElementById("score").textContent = score;
+      document.getElementById("streak").textContent = streak;
+    }
+
+    function nextQuestion() {
+      current = (current + 1) % questions.length;
+      renderQuestion();
+    }
+
+    function resetQuiz() {
+      current = 0;
+      score = 0;
+      streak = 0;
+      renderQuestion();
+    }
+
+    renderQuestion();
+  </script>
+</body>
+</html>
