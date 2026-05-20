@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OSI Model | Network+ Study Hub</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .osi-stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .osi-layer {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 18px;
+      align-items: center;
+
+      padding: 18px;
+
+      border-radius: 20px;
+
+      background: rgba(255,255,255,.05);
+
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .layer-number {
+      width: 58px;
+      height: 58px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 18px;
+
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+
+      color: white;
+
+      font-size: 1.5rem;
+
+      font-weight: 900;
+    }
+
+    .osi-layer h2 {
+      margin: 0 0 6px;
+      font-size: 1.25rem;
+      color: white;
+    }
+
+    .osi-layer p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .layer-key {
+      margin-top: 10px;
+      color: #dbeafe;
+      font-weight: 700;
+    }
+
+    .trouble-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .trouble-card {
+      padding: 20px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .trouble-card h2 {
+      margin-top: 0;
+      color: var(--cyan);
+    }
+
+    @media (max-width: 800px) {
+      .osi-layer {
+        grid-template-columns: 1fr;
+      }
+
+      .trouble-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">🧠</div>
+
+        <div>
+          <h2><span class="gradient-text">NET+</span></h2>
+          <span>N10-009</span>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="ports.html">Ports</a>
+        <a href="subnetting.html">Subnetting</a>
+        <a href="flashcards.html">Flashcards</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="acronyms.html">Acronyms</a>
+        <a href="commands.html">Commands</a>
+        <a href="osi.html" class="active">OSI Model</a>
+      </nav>
+
+      <div class="side-note">
+        <strong>OSI Rule</strong>
+        <span>For troubleshooting, start low and move up.</span>
+      </div>
+    </aside>
+
+    <main id="main">
+      <section class="hero-card">
+        <p class="eyebrow">OSI Model</p>
+
+        <h1>Use it like a checklist.</h1>
+
+        <p class="subtitle">
+          The OSI model is not just something to memorize. It helps you troubleshoot from physical problems up to application problems.
+        </p>
+      </section>
+
+      <section class="panel">
+        <p class="section-tag">Memory Trick</p>
+
+        <div class="rules-grid">
+          <article class="study-rule">
+            <h2>Top to Bottom</h2>
+            <p><strong>All People Seem To Need Data Processing</strong></p>
+            <p>Application, Presentation, Session, Transport, Network, Data Link, Physical.</p>
+          </article>
+
+          <article class="study-rule">
+            <h2>Bottom to Top</h2>
+            <p><strong>Please Do Not Throw Sausage Pizza Away</strong></p>
+            <p>Physical, Data Link, Network, Transport, Session, Presentation, Application.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel">
+        <p class="section-tag">The 7 Layers</p>
+
+        <div class="osi-stack">
+          <article class="osi-layer">
+            <div class="layer-number">7</div>
+            <div>
+              <h2>Application</h2>
+              <p>The layer users interact with.</p>
+              <div class="layer-key">Examples: HTTP, HTTPS, DNS, SMTP</div>
+            </div>
+          </article>
+
+          <article class="osi-layer">
+            <div class="layer-number">6</div>
+            <div>
+              <h2>Presentation</h2>
+              <p>Formats, translates, compresses, or encrypts data.</p>
+              <div class="layer-key">Examples: TLS, SSL, encryption, compression</div>
+            </div>
+          </article>
+
+          <article class="osi-layer">
+            <div class="layer-number">5</div>
+            <div>
+              <h2>Session</h2>
+              <p>Starts, manages, and ends communication sessions.</p>
+              <div class="layer-key">Think: keeping conversations open</div>
+            </div>
+          </article>
+
+          <article class="osi-layer">
+            <div class="layer-number">4</div>
+            <div>
+              <h2>Transport</h2>
+              <p>Handles ports, reliability, and delivery methods.</p>
+              <div class="layer-key">Examples: TCP, UDP, port numbers</div>
+            </div>
+          </article>
+
+          <article class="osi-layer">
+            <div class="layer-number">3</div>
+            <div>
+              <h2>Network</h2>
+              <p>Handles IP addressing and routing between networks.</p>
+              <div class="layer-key">Examples: IP, routers, ICMP</div>
+            </div>
+          </article>
+
+          <article class="osi-layer">
+            <div class="layer-number">2</div>
+            <div>
+              <h2>Data Link</h2>
+              <p>Handles MAC addresses, frames, switches, and VLANs.</p>
+              <div class="layer-key">Examples: Ethernet, MAC, switch, ARP</div>
+            </div>
+          </article>
+
+          <article class="osi-layer">
+            <div class="layer-number">1</div>
+            <div>
+              <h2>Physical</h2>
+              <p>Handles cables, signals, ports, light, electricity, and hardware.</p>
+              <div class="layer-key">Examples: cables, connectors, NICs, link lights</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel">
+        <p class="section-tag">Troubleshooting With OSI</p>
+
+        <div class="trouble-grid">
+          <article class="trouble-card">
+            <h2>Layer 1: Physical</h2>
+            <p>Check cable, Wi-Fi connection, link lights, NIC, power, and physical damage.</p>
+          </article>
+
+          <article class="trouble-card">
+            <h2>Layer 2: Data Link</h2>
+            <p>Check switch port, VLAN, MAC table, duplex mismatch, and STP issues.</p>
+          </article>
+
+          <article class="trouble-card">
+            <h2>Layer 3: Network</h2>
+            <p>Check IP address, subnet mask, default gateway, routing table, and APIPA.</p>
+          </article>
+
+          <article class="trouble-card">
+            <h2>Layer 4: Transport</h2>
+            <p>Check ports, TCP/UDP, firewall rules, and whether the service is listening.</p>
+          </article>
+
+          <article class="trouble-card">
+            <h2>Layers 5–7</h2>
+            <p>Check sessions, encryption, DNS names, application settings, browser, or service issues.</p>
+          </article>
+
+          <article class="trouble-card">
+            <h2>Exam Move</h2>
+            <p>If the question says cable, signal, link light, or connector, think Layer 1 first.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
