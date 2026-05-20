@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acronyms | Network+ Study Hub</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .category-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .category-btn {
+      padding: 12px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.05);
+      color: white;
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    .category-btn.active {
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+    }
+
+    .acronym-card {
+      padding: 32px;
+      border-radius: 28px;
+
+      background:
+        radial-gradient(circle at top left, rgba(34,211,238,.18), transparent 35%),
+        linear-gradient(145deg, rgba(15,23,42,.95), rgba(2,8,23,.92));
+
+      border: 1px solid rgba(255,255,255,.08);
+
+      min-height: 320px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      cursor: pointer;
+    }
+
+    .acronym-top {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .acronym-word {
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 900;
+      letter-spacing: -.04em;
+      margin: 0;
+    }
+
+    .acronym-answer {
+      display: none;
+
+      margin-top: 24px;
+
+      padding-top: 20px;
+
+      border-top: 1px solid rgba(255,255,255,.08);
+
+      font-size: 1.2rem;
+
+      color: #dbeafe;
+    }
+
+    .acronym-card.revealed .acronym-answer {
+      display: block;
+    }
+
+    .memory-tip {
+      margin-top: 22px;
+
+      padding: 18px;
+
+      border-radius: 18px;
+
+      background: rgba(255,255,255,.04);
+
+      border-left: 5px solid var(--orange);
+    }
+
+    .memory-tip strong {
+      color: #fde68a;
+    }
+
+    .card-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .card-controls button {
+      padding: 12px 18px;
+      border-radius: 14px;
+      border: none;
+      cursor: pointer;
+      color: white;
+      font-weight: 900;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(59,130,246,.32),
+          rgba(168,85,247,.32)
+        );
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo">🧠</div>
+
+        <div>
+          <h2><span class="gradient-text">NET+</span></h2>
+          <span>N10-009</span>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="ports.html">Ports</a>
+        <a href="subnetting.html">Subnetting</a>
+        <a href="flashcards.html">Flashcards</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="acronyms.html" class="active">Acronyms</a>
+        <a href="commands.html">Commands</a>
+        <a href="osi.html">OSI Model</a>
+      </nav>
+
+      <div class="side-note">
+        <strong>Acronym Rule</strong>
+        <span>Learn the meaning AND what it actually does.</span>
+      </div>
+    </aside>
+
+    <main id="main">
+      <section class="hero-card">
+        <p class="eyebrow">Acronyms</p>
+
+        <h1>Stop memorizing alphabet soup.</h1>
+
+        <p class="subtitle">
+          Acronyms are easier when grouped by topic and attached to what they actually do in a network.
+        </p>
+      </section>
+
+      <section class="panel">
+        <p class="section-tag">Choose a Category</p>
+
+        <div class="category-tabs">
+          <button class="category-btn active"
+            onclick="changeCategory('networking', event)">
+            Networking
+          </button>
+
+          <button class="category-btn"
+            onclick="changeCategory('security', event)">
+            Security
+          </button>
+
+          <button class="category-btn"
+            onclick="changeCategory('wireless', event)">
+            Wireless
+          </button>
+
+          <button class="category-btn"
+            onclick="changeCategory('routing', event)">
+            Routing
+          </button>
+        </div>
+
+        <div class="acronym-card"
+          id="acronymCard"
+          onclick="flipCard()">
+
+          <div class="acronym-top">
+            <span id="categoryName">Networking</span>
+            <span id="cardCounter">1 / 1</span>
+          </div>
+
+          <h2 class="acronym-word" id="question">
+            DNS
+          </h2>
+
+          <div class="acronym-answer" id="answer"></div>
+
+          <p class="flash-hint">
+            Click card to reveal answer
+          </p>
+        </div>
+
+        <div class="card-controls">
+          <button onclick="prevCard(event)">
+            ← Previous
+          </button>
+
+          <button onclick="flipCard(event)">
+            Flip
+          </button>
+
+          <button onclick="nextCard(event)">
+            Next →
+          </button>
+        </div>
+
+        <div class="memory-tip" id="memoryTip">
+          <strong>Memory Tip:</strong>
+          DNS finds names fast.
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const categories = {
+      networking: [
+        {
+          q: "DNS",
+          a: "Domain Name System — converts names into IP addresses.",
+          tip: "DNS finds names fast."
+        },
+
+        {
+          q: "DHCP",
+          a: "Dynamic Host Configuration Protocol — automatically assigns IP addresses.",
+          tip: "DHCP gives devices their network settings."
+        },
+
+        {
+          q: "NAT",
+          a: "Network Address Translation — converts private IPs into public IPs.",
+          tip: "NAT hides many private devices behind one public IP."
+        },
+
+        {
+          q: "SNMP",
+          a: "Simple Network Management Protocol — monitors network devices.",
+          tip: "Think monitoring dashboards."
+        }
+      ],
+
+      security: [
+        {
+          q: "AAA",
+          a: "Authentication, Authorization, and Accounting.",
+          tip: "Who are you? What can you access? What did you do?"
+        },
+
+        {
+          q: "MFA",
+          a: "Multi-Factor Authentication.",
+          tip: "Password plus something else."
+        },
+
+        {
+          q: "ACL",
+          a: "Access Control List — filters traffic using permit and deny rules.",
+          tip: "Think traffic filter rules."
+        },
+
+        {
+          q: "PKI",
+          a: "Public Key Infrastructure — manages certificates and trust.",
+          tip: "PKI helps encrypted systems trust each other."
+        }
+      ],
+
+      wireless: [
+        {
+          q: "SSID",
+          a: "Service Set Identifier — Wi-Fi network name.",
+          tip: "The name you click when joining Wi-Fi."
+        },
+
+        {
+          q: "WPA3",
+          a: "Wi-Fi Protected Access 3 — wireless security standard.",
+          tip: "Modern Wi-Fi security."
+        },
+
+        {
+          q: "AP",
+          a: "Access Point — provides wireless network access.",
+          tip: "Turns wired network into wireless."
+        },
+
+        {
+          q: "PoE",
+          a: "Power over Ethernet — sends power through Ethernet cables.",
+          tip: "One cable for both power and data."
+        }
+      ],
+
+      routing: [
+        {
+          q: "OSPF",
+          a: "Open Shortest Path First — link-state routing protocol.",
+          tip: "OSPF chooses best path using cost."
+        },
+
+        {
+          q: "BGP",
+          a: "Border Gateway Protocol — internet routing protocol.",
+          tip: "BGP runs the internet."
+        },
+
+        {
+          q: "RIP",
+          a: "Routing Information Protocol — uses hop count.",
+          tip: "RIP trusts everybody too much."
+        },
+
+        {
+          q: "CIDR",
+          a: "Classless Inter-Domain Routing — slash notation like /24.",
+          tip: "CIDR controls subnet size."
+        }
+      ]
+    };
+
+    let currentCategory = "networking";
+    let currentCard = 0;
+
+    function renderCard() {
+      const deck = categories[currentCategory];
+      const card = deck[currentCard];
+
+      document.getElementById("acronymCard")
+        .classList.remove("revealed");
+
+      document.getElementById("categoryName")
+        .textContent =
+          currentCategory.charAt(0).toUpperCase() +
+          currentCategory.slice(1);
+
+      document.getElementById("cardCounter")
+        .textContent =
+          `${currentCard + 1} / ${deck.length}`;
+
+      document.getElementById("question")
+        .textContent = card.q;
+
+      document.getElementById("answer")
+        .textContent = card.a;
+
+      document.getElementById("memoryTip")
+        .innerHTML =
+          `<strong>Memory Tip:</strong> ${card.tip}`;
+    }
+
+    function flipCard(event) {
+      if (event) event.stopPropagation();
+
+      document.getElementById("acronymCard")
+        .classList.toggle("revealed");
+    }
+
+    function nextCard(event) {
+      if (event) event.stopPropagation();
+
+      currentCard =
+        (currentCard + 1) %
+        categories[currentCategory].length;
+
+      renderCard();
+    }
+
+    function prevCard(event) {
+      if (event) event.stopPropagation();
+
+      currentCard =
+        (currentCard - 1 + categories[currentCategory].length) %
+        categories[currentCategory].length;
+
+      renderCard();
+    }
+
+    function changeCategory(category, event) {
+      currentCategory = category;
+      currentCard = 0;
+
+      document
+        .querySelectorAll(".category-btn")
+        .forEach(btn => btn.classList.remove("active"));
+
+      event.target.classList.add("active");
+
+      renderCard();
+    }
+
+    renderCard();
+  </script>
+</body>
+</html>
