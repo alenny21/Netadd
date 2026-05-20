@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cables | Network+ Study Hub</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .cable-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .cable-card {
+      padding: 24px;
+      border-radius: 24px;
+      background: rgba(15,23,42,.94);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .cable-card h2 {
+      margin-top: 0;
+      color: var(--cyan);
+    }
+
+    .big-rule {
+      padding: 22px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(34,211,238,.14), rgba(168,85,247,.14));
+      border-left: 6px solid var(--orange);
+      margin-bottom: 18px;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #fde68a;
+    }
+
+    .mini-list {
+      margin: 0;
+      padding-left: 20px;
+      color: #dbeafe;
+    }
+
+    .mini-list li {
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 900px) {
+      .cable-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">🧠</div>
+        <div>
+          <h2><span class="gradient-text">NET+</span></h2>
+          <span>N10-009</span>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="ports.html">Ports</a>
+        <a href="subnetting.html">Subnetting</a>
+        <a href="flashcards.html">Flashcards</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="acronyms.html">Acronyms</a>
+        <a href="commands.html">Commands</a>
+        <a href="osi.html">OSI Model</a>
+        <a href="pbq.html">PBQ Lab</a>
+        <a href="exam-cram.html">Exam Cram</a>
+        <a href="cables.html" class="active">Cables</a>
+      </nav>
+
+      <div class="side-note">
+        <strong>Cable Rule</strong>
+        <span>Fiber is light. Copper is electricity.</span>
+      </div>
+    </aside>
+
+    <main id="main">
+      <section class="hero-card">
+        <p class="eyebrow">Cables & Media</p>
+        <h1>Make cable questions easy.</h1>
+        <p class="subtitle">
+          Do not memorize every tiny detail first. Start with the big patterns CompTIA loves to test.
+        </p>
+      </section>
+
+      <section class="panel">
+        <p class="section-tag">Main Memory Rules</p>
+
+        <div class="big-rule">Fiber = light = fastest, longest distance, no EMI.</div>
+        <div class="big-rule">Copper = electricity = common Ethernet, cheaper, affected by EMI.</div>
+        <div class="big-rule">STP = shielded. UTP = unshielded.</div>
+      </section>
+
+      <section class="panel">
+        <p class="section-tag">Cable Types</p>
+
+        <div class="cable-grid">
+          <article class="cable-card">
+            <h2>Fiber</h2>
+            <ul class="mini-list">
+              <li>Uses light</li>
+              <li>Best for long distance</li>
+              <li>Not affected by EMI</li>
+              <li>Common in backbones and data centers</li>
+            </ul>
+          </article>
+
+          <article class="cable-card">
+            <h2>Copper</h2>
+            <ul class="mini-list">
+              <li>Uses electrical signals</li>
+              <li>Common for Ethernet</li>
+              <li>Cheaper and easier to install</li>
+              <li>Can be affected by EMI</li>
+            </ul>
+          </article>
+
+          <article class="cable-card">
+            <h2>Single-Mode Fiber</h2>
+            <ul class="mini-list">
+              <li>Longer distance</li>
+              <li>Uses laser light</li>
+              <li>More expensive</li>
+              <li>Think: one path, far distance</li>
+            </ul>
+          </article>
+
+          <article class="cable-card">
+            <h2>Multimode Fiber</h2>
+            <ul class="mini-list">
+              <li>Shorter distance</li>
+              <li>Usually uses LED light</li>
+              <li>Less expensive than single-mode</li>
+              <li>Think: many paths, shorter range</li>
+            </ul>
+          </article>
+
+          <article class="cable-card">
+            <h2>UTP</h2>
+            <ul class="mini-list">
+              <li>Unshielded Twisted Pair</li>
+              <li>Very common Ethernet cable</li>
+              <li>Cheaper</li>
+              <li>Less protection from interference</li>
+            </ul>
+          </article>
+
+          <article class="cable-card">
+            <h2>STP</h2>
+            <ul class="mini-list">
+              <li>Shielded Twisted Pair</li>
+              <li>Better protection from EMI</li>
+              <li>More expensive</li>
+              <li>S = shield</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel">
+        <p class="section-tag">Connector Quick Hits</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Connector</th>
+              <th>Used For</th>
+              <th>Memory Hook</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>RJ45</td>
+              <td>Ethernet</td>
+              <td>Network cable plug</td>
+            </tr>
+            <tr>
+              <td>RJ11</td>
+              <td>Phone/DSL</td>
+              <td>Smaller than RJ45</td>
+            </tr>
+            <tr>
+              <td>LC</td>
+              <td>Fiber</td>
+              <td>Little connector</td>
+            </tr>
+            <tr>
+              <td>SC</td>
+              <td>Fiber</td>
+              <td>Square connector</td>
+            </tr>
+            <tr>
+              <td>F-Type</td>
+              <td>Coax</td>
+              <td>Cable TV / broadband</td>
+            </tr>
+            <tr>
+              <td>BNC</td>
+              <td>Coax</td>
+              <td>Twist-lock connector</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="panel">
+        <p class="section-tag">Exam Traps</p>
+
+        <div class="cable-grid">
+          <article class="study-rule">
+            <h2>EMI Problem?</h2>
+            <p>Pick fiber or shielded cable.</p>
+          </article>
+
+          <article class="study-rule">
+            <h2>Longest Distance?</h2>
+            <p>Pick single-mode fiber.</p>
+          </article>
+
+          <article class="study-rule">
+            <h2>Normal Office Ethernet?</h2>
+            <p>Think twisted pair copper and RJ45.</p>
+          </article>
+
+          <article class="study-rule">
+            <h2>Air Handling Space?</h2>
+            <p>Think plenum-rated cable.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
